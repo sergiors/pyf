@@ -27,17 +27,17 @@ def path(dct: dict, steps: list):
 
 
 @Pipe
-def map(xs: list, f) -> list:
+def map(xs: list, f: callable) -> list:
     return [f(x) for x in xs]
 
 
 @Pipe
-def filter(xs: list, f) -> list:
+def filter(xs: list, f: callable) -> list:
     return [x for x in xs if f(x)]
 
 
 @Pipe
-def reduce(xs: list, f, init=None):
+def reduce(xs: list, f: callable, init=None):
     if not xs:
         return init
 
