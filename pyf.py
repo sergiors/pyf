@@ -38,11 +38,15 @@ def filter(xs: list, f) -> list:
 
 @Pipe
 def reduce(xs: list, f, init=None):
-    from functools import reduce
+    if not xs:
+        return init
 
-    return reduce(f, xs, init)
+    if init is None:
+        init, *xs = xs
+
+    return f(xs[:-1] | reduce(f, init), xs[-1])
 
 
 if __name__ == '__main__':
     import doctest
-    doctest.testfile('README.md')
+    doctest.testfile('README.md', verbose=True)

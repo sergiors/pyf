@@ -21,3 +21,6 @@
 
     >>> [1, 2, 3, 4, 5] | reduce(lambda x, y: x+y)
     15
+
+    >>> ['b', 'c'] | reduce(lambda x, y: x+y, 'a')
+    'abc'
