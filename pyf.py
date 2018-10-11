@@ -1,6 +1,17 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+import builtins
+import functools
+
 from pipe import Pipe
+from pipe import as_list
+
+
+__all__ = [
+    'prop', 'prepend', 'merge', 'path', 'map', 'filter', 'reduce'
+]
 
 
 @Pipe
@@ -28,23 +39,20 @@ def path(dct: dict, steps: list):
 
 @Pipe
 def map(xs: list, f: callable) -> list:
-    return [f(x) for x in xs]
+    return builtins.map(f, xs) | as_list
 
 
 @Pipe
 def filter(xs: list, f: callable) -> list:
-    return [x for x in xs if f(x)]
+    return builtins.filter(f, xs) | as_list
 
 
 @Pipe
 def reduce(xs: list, f: callable, init=None):
-    if not xs:
-        return init
-
     if init is None:
         init, *xs = xs
 
-    return f(xs[:-1] | reduce(f, init), xs[-1])
+    return functools.reduce(f, xs, init)
 
 
 if __name__ == '__main__':
