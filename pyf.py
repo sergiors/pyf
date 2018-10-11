@@ -10,7 +10,8 @@ from pipe import as_list
 
 
 __all__ = [
-    'prop', 'prepend', 'merge', 'path', 'map', 'filter', 'reduce'
+    'prop', 'prepend', 'merge', 'path', 'map', 'filter', 'reduce',
+    'pick', 'omit'
 ]
 
 
@@ -43,7 +44,7 @@ def map(xs: list, f: callable) -> list:
 
 
 @Pipe
-def filter(xs: list, f: callable) -> list:
+def filter(xs, f: callable) -> list:
     return builtins.filter(f, xs) | as_list
 
 
@@ -53,6 +54,16 @@ def reduce(xs: list, f: callable, init=None):
         init, *xs = xs
 
     return functools.reduce(f, xs, init)
+
+
+@Pipe
+def pick(dct: dict, names: list) -> dict:
+    return {k: v for k, v in dct.items() if k in names}
+
+
+@Pipe
+def omit(dct: dict, names: list) -> dict:
+    return {k: v for k, v in dct.items() if k not in names}
 
 
 if __name__ == '__main__':

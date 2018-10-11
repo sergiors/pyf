@@ -25,4 +25,10 @@
 >>> ['b', 'c'] | reduce(lambda x, y: x+y, 'a')
 'abc'
 
+>>> {'black': '#000', 'gray': '#808080'} | pick(['gray'])
+{'gray': '#808080'}
+
+>>> {'indigo': '#4b0082', 'navy': '#000080'} | omit(['indigo'])
+{'navy': '#000080'}
+
 ```
