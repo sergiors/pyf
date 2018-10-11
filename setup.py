@@ -2,5 +2,6 @@ from setuptools import setup
 
 setup(
     name='pyf',
-    license='MIT license'
+    license='MIT license',
+    py_modules=['pfy'],
 )
