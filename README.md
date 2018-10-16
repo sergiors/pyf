@@ -1,3 +1,12 @@
+Pyf
+---
+
+**Pyf** is a functional library. It's built on the shoulders of [Pipe](https://github.com/JulienPalard/Pipe) project. 
+If you don't find some functions here, we recommend you take a look on the [Pipe](https://github.com/JulienPalard/Pipe) project.
+
+Below It's all functions that have been implemented.
+
+
 ```python
 >>> from pyf import *
 
@@ -32,3 +41,13 @@
 {'navy': '#000080'}
 
 ```
+
+Contributions
+-------------
+
+Everyone's welcome to contribute it. You might open a pull request at anytime.
+
+License
+-------
+
+MIT
