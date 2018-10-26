@@ -5,14 +5,19 @@
 import builtins
 import functools
 
+
 from pipe import Pipe
 from pipe import as_list
 
 
 __all__ = [
     'prop', 'prepend', 'merge', 'path', 'map', 'filter', 'reduce',
-    'pick', 'omit'
+    'pick', 'omit', 'equal'
 ]
+
+
+def equal(x) -> bool:
+    return lambda y: x == y
 
 
 @Pipe
