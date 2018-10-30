@@ -1,12 +1,13 @@
 import builtins
 import functools
 
+
 from pipe import Pipe
 
 
 __all__ = [
     'identity', 'always', 'as_str', 'as_int', 'prop', 'prepend', 'merge',
-    'path', 'map', 'filter', 'reduce', 'pick', 'omit',
+    'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal'
 ]
 
 
@@ -26,6 +27,10 @@ def as_str(x) -> str:
 @Pipe
 def as_int(x) -> int:
     return int(x)
+
+
+def equal(x) -> bool:
+    return lambda y: x == y
 
 
 @Pipe

@@ -41,6 +41,9 @@ Below It's all functions that have been implemented.
 >>> {'indigo': '#4b0082', 'navy': '#000080'} | omit(['indigo'])
 {'navy': '#000080'}
 
+>>> [5, 4, 5, 6, 7] | filter(equal(5)) | as_list
+[5, 5]
+
 ```
 
 Contributions
