@@ -1,18 +1,31 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-
 import builtins
 import functools
 
 from pipe import Pipe
-from pipe import as_list
 
 
 __all__ = [
-    'prop', 'prepend', 'merge', 'path', 'map', 'filter', 'reduce',
-    'pick', 'omit'
+    'identity', 'always', 'as_str', 'as_int', 'prop', 'prepend', 'merge',
+    'path', 'map', 'filter', 'reduce', 'pick', 'omit',
 ]
+
+
+def identity(x):
+    return x
+
+
+def always(x):
+    return lambda: x
+
+
+@Pipe
+def as_str(x) -> str:
+    return str(x)
+
+
+@Pipe
+def as_int(x) -> int:
+    return int(x)
 
 
 @Pipe
@@ -39,13 +52,13 @@ def path(dct: dict, steps: list):
 
 
 @Pipe
-def map(xs: list, f: callable) -> list:
-    return builtins.map(f, xs) | as_list
+def map(xs: list, f: callable):
+    return builtins.map(f, xs)
 
 
 @Pipe
-def filter(xs, f: callable) -> list:
-    return builtins.filter(f, xs) | as_list
+def filter(xs, f: callable):
+    return builtins.filter(f, xs)
 
 
 @Pipe

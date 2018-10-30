@@ -1,11 +1,11 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from setuptools import setup
 
 
 setup(
     name='pyf',
-    license='MIT license',
+    version='0.1',
+    long_description=open('README.md').read(),
+    license='MIT',
     py_modules=['pyf'],
+    python_requires='>=3.6',
 )

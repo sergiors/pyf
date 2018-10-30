@@ -8,6 +8,7 @@ Below It's all functions that have been implemented.
 
 
 ```python
+>>> from pipe import as_list
 >>> from pyf import *
 
 >>> [1, 2, 3] | prepend(1)
@@ -22,10 +23,10 @@ Below It's all functions that have been implemented.
 >>> {'addr': {'country': 'Brazil'}} | path(['addr', 'country'])
 'Brazil'
 
->>> [1, 2, 3] | map(lambda x: x + 2)
+>>> [1, 2, 3] | map(lambda x: x + 2) | as_list
 [3, 4, 5]
 
->>> [-1, 1, 2, -2, 3] | filter(lambda x: x > 0)
+>>> [-1, 1, 2, -2, 3] | filter(lambda x: x > 0) | as_list
 [1, 2, 3]
 
 >>> [1, 2, 3, 4, 5] | reduce(lambda x, y: x+y)
