@@ -1,7 +1,7 @@
 Pyf
 ---
 
-**Pyf** is a functional library. It's built on the shoulders of [Pipe](https://github.com/JulienPalard/Pipe) project. 
+**Pyf** is a functional library. It's built on the shoulders of [Pipe](https://github.com/JulienPalard/Pipe) project.
 If you don't find some functions here, we recommend you take a look on the [Pipe](https://github.com/JulienPalard/Pipe) project.
 
 Below It's all functions that have been implemented.
@@ -19,6 +19,9 @@ Below It's all functions that have been implemented.
 
 >>> {'name': 'Joe'} | prop('name')
 'Joe'
+
+>>> {'name': 'Jimi', 'surname': 'Hendrix'} | values
+['Jimi', 'Hendrix']
 
 >>> {'addr': {'country': 'Brazil'}} | path(['addr', 'country'])
 'Brazil'

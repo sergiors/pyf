@@ -6,8 +6,8 @@ from pipe import Pipe
 
 
 __all__ = [
-    'identity', 'always', 'as_str', 'as_int', 'prop', 'prepend', 'merge',
-    'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal'
+    'identity', 'always', 'as_str', 'as_int', 'prop', 'values', 'prepend',
+    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal'
 ]
 
 
@@ -36,6 +36,11 @@ def equal(x) -> bool:
 @Pipe
 def prop(dct: dict, k: str, default=None):
     return dct.get(k, default)
+
+
+@Pipe
+def values(dct: dict) -> list:
+    return list(dct.values())
 
 
 @Pipe
