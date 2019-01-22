@@ -8,6 +8,7 @@ pipe = "==1.5.0"
 
 [dev-packages]
 mypy = "==0.630"
+yapf = "*"
 
 [requires]
 python_version = "3.6"

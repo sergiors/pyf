@@ -1,13 +1,11 @@
 import builtins
 import functools
 
-
 from pipe import Pipe
-
 
 __all__ = [
     'identity', 'always', 'as_str', 'as_int', 'prop', 'values', 'prepend',
-    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal'
+    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal', 'find'
 ]
 
 
@@ -62,21 +60,21 @@ def path(dct: dict, steps: list):
 
 
 @Pipe
-def map(xs: list, f: callable):
-    return builtins.map(f, xs)
+def map(lst: list, f: callable):
+    return builtins.map(f, lst)
 
 
 @Pipe
-def filter(xs, f: callable):
-    return builtins.filter(f, xs)
+def filter(lst, f: callable):
+    return builtins.filter(f, lst)
 
 
 @Pipe
-def reduce(xs: list, f: callable, init=None):
+def reduce(lst: list, f: callable, init=None):
     if init is None:
-        init, *xs = xs
+        init, *lst = lst
 
-    return functools.reduce(f, xs, init)
+    return functools.reduce(f, lst, init)
 
 
 @Pipe
@@ -87,6 +85,19 @@ def pick(dct: dict, names: list) -> dict:
 @Pipe
 def omit(dct: dict, names: list) -> dict:
     return {k: v for k, v in dct.items() if k not in names}
+
+
+@Pipe
+def find(lst: list, f: callable):
+    v = next(iter(lst), None)
+
+    if v is None:
+        return None
+
+    if f(v):
+        return v
+
+    return lst[1:] | find(f)
 
 
 if __name__ == '__main__':

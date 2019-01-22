@@ -47,6 +47,9 @@ Below It's all functions that have been implemented.
 >>> [5, 4, 5, 6, 7] | filter(equal(5)) | as_list
 [5, 5]
 
+>>> [2, 3, 4, 5, 6, 7, 8] | find(lambda x: x % 2 is 1)
+3
+
 ```
 
 Contributions
