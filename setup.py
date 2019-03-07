@@ -8,4 +8,7 @@ setup(
     license='MIT',
     py_modules=['pyf'],
     python_requires='>=3.6',
+    install_requires=[
+        "pipe==1.5.0"
+    ],
 )
