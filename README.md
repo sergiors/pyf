@@ -26,6 +26,9 @@ Below It's all functions that have been implemented.
 >>> {'addr': {'country': 'Brazil'}} | path(['addr', 'country'])
 'Brazil'
 
+>>> {'user': {'addr': {'country': 'Brazil'}}} | path(['user', 'addr'])
+{'country': 'Brazil'}
+
 >>> [1, 2, 3] | map(lambda x: x + 2) | as_list
 [3, 4, 5]
 

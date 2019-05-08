@@ -55,8 +55,9 @@ def merge(l_dct: dict, r_dct: dict) -> dict:
 def path(dct: dict, steps: list):
     k = steps[0]
     v = dct.get(k)
+    t = steps[1:]
 
-    return v if type(v) is not dict else v | path(steps[1:])
+    return v if not t else v | path(t)
 
 
 @Pipe
