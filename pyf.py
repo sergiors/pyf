@@ -1,13 +1,25 @@
 import builtins
 import functools
+import inspect
 
 from pipe import Pipe
 
 __all__ = [
     'identity', 'always', 'as_str', 'as_int', 'prop', 'values', 'prepend',
-    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal', 'find',
-    'find_index'
+    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equals',
+    'prop_eq', 'find', 'find_index', 'partial'
 ]
+
+
+def partial(f):
+    @functools.wraps(f)
+    def wrapped(*args, **kwargs):
+        func = functools.partial(f, *args, **kwargs)
+        arity = len(inspect.getfullargspec(func).args)
+
+        return func if arity else func()
+
+    return wrapped
 
 
 def identity(x):
@@ -28,8 +40,14 @@ def as_int(x) -> int:
     return int(x)
 
 
-def equal(x) -> bool:
-    return lambda y: x == y
+@partial
+def equals(x, y) -> bool:
+    return x == y
+
+
+@partial
+def prop_eq(k, v, dct):
+    return equals(v, dct[k])
 
 
 @Pipe

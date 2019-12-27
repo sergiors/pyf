@@ -53,17 +53,20 @@ Below It's all functions that have been implemented.
 >>> {'indigo': '#4b0082', 'navy': '#000080'} | omit(['indigo'])
 {'navy': '#000080'}
 
->>> [5, 4, 5, 6, 7] | filter(equal(5)) | as_list
+>>> [5, 4, 5, 6, 7] | filter(equals(5)) | as_list
 [5, 5]
 
 >>> [2, 3, 4, 5, 6, 7, 8] | find(lambda x: x % 2 is 1)
 3
 
->>> [{'name': 'Jimi'}, {'name': 'James'}] | find_index(lambda x: x['name'] == 'James')
+>>> [{'name': 'Jimi'}, {'name': 'James'}] | find_index(prop_eq('name', 'James'))
 1
 
->>> [0, 3, 5] | find_index(equal(1))
+>>> [0, 3, 5] | find_index(equals(1))
 -1
+
+>>> equals(1, 1)
+True
 
 ```
 
