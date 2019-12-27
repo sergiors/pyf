@@ -35,13 +35,19 @@ Below It's all functions that have been implemented.
 >>> {'addr': {'country': 'Brazil'}} | path(['addr', 'street_number'], 0)
 0
 
->>> [1, 2, 3] | map(lambda x: x + 2) | as_list
+>>> @partial
+... def plus(x):
+...     return x + 2
+>>> [1, 2, 3] | map(plus) | as_list
 [3, 4, 5]
 
 >>> [-1, 1, 2, -2, 3] | filter(lambda x: x > 0) | as_list
 [1, 2, 3]
 
->>> [1, 2, 3, 4, 5] | reduce(lambda x, y: x+y)
+>>> @partial
+... def sum(x, y):
+...     return x + y
+>>> [1, 2, 3, 4, 5] | reduce(sum)
 15
 
 >>> ['b', 'c'] | reduce(lambda x, y: x+y, 'a')
