@@ -107,7 +107,7 @@ def find_index(lst: list, f: callable):
         if f(v):
             return k
 
-    return None
+    return -1
 
 
 if __name__ == '__main__':

@@ -63,6 +63,7 @@ Below It's all functions that have been implemented.
 1
 
 >>> [0, 3, 5] | find_index(equal(1))
+-1
 
 ```
 
