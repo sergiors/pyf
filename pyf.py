@@ -5,7 +5,8 @@ from pipe import Pipe
 
 __all__ = [
     'identity', 'always', 'as_str', 'as_int', 'prop', 'values', 'prepend',
-    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal', 'find'
+    'merge', 'path', 'map', 'filter', 'reduce', 'pick', 'omit', 'equal', 'find',
+    'find_index'
 ]
 
 
@@ -52,12 +53,12 @@ def merge(l_dct: dict, r_dct: dict) -> dict:
 
 
 @Pipe
-def path(dct: dict, steps: list):
+def path(dct: dict, steps: list, default=None):
     k = steps[0]
-    v = dct.get(k)
+    v = dct.get(k, default)
     t = steps[1:]
 
-    return v if not t else v | path(t)
+    return v if not t else v | path(t, default)
 
 
 @Pipe
@@ -72,7 +73,7 @@ def filter(lst, f: callable):
 
 @Pipe
 def reduce(lst: list, f: callable, init=None):
-    if init is None:
+    if not init:
         init, *lst = lst
 
     return functools.reduce(f, lst, init)
@@ -92,13 +93,21 @@ def omit(dct: dict, names: list) -> dict:
 def find(lst: list, f: callable):
     v = next(iter(lst), None)
 
-    if v is None:
+    if not v:
         return None
 
     if f(v):
         return v
 
     return lst[1:] | find(f)
+
+@Pipe
+def find_index(lst: list, f: callable):
+    for k, v in enumerate(lst):
+        if f(v):
+            return k
+
+    return None
 
 
 if __name__ == '__main__':

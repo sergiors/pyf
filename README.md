@@ -20,6 +20,9 @@ Below It's all functions that have been implemented.
 >>> {'name': 'Joe'} | prop('name')
 'Joe'
 
+>>> {'name': 'Joe'} | prop('addr', {})
+{}
+
 >>> {'name': 'Jimi', 'surname': 'Hendrix'} | values
 ['Jimi', 'Hendrix']
 
@@ -28,6 +31,9 @@ Below It's all functions that have been implemented.
 
 >>> {'user': {'addr': {'country': 'Brazil'}}} | path(['user', 'addr'])
 {'country': 'Brazil'}
+
+>>> {'addr': {'country': 'Brazil'}} | path(['addr', 'street_number'], 0)
+0
 
 >>> [1, 2, 3] | map(lambda x: x + 2) | as_list
 [3, 4, 5]
@@ -52,6 +58,11 @@ Below It's all functions that have been implemented.
 
 >>> [2, 3, 4, 5, 6, 7, 8] | find(lambda x: x % 2 is 1)
 3
+
+>>> [{'name': 'Jimi'}, {'name': 'James'}] | find_index(lambda x: x['name'] == 'James')
+1
+
+>>> [0, 3, 5] | find_index(equal(1))
 
 ```
 
