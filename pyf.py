@@ -73,7 +73,7 @@ def merge(l_dct: dict, r_dct: dict) -> dict:
 @Pipe
 def path(dct: dict, steps: list, default=None):
     k = steps[0]
-    v = dct.get(k, default)
+    v = dct.get(k, default) if isinstance(dct, dict) else default
     t = steps[1:]
 
     return v if not t else v | path(t, default)
