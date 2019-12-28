@@ -35,6 +35,9 @@ Below It's all functions that have been implemented.
 >>> {'addr': {'country': 'Brazil'}} | path(['addr', 'street_number'], 0)
 0
 
+>>> {} | path(['addr', 'street_number'], 0)
+0
+
 >>> @partial
 ... def plus(x):
 ...     return x + 2
