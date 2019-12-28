@@ -91,7 +91,7 @@ def filter(lst, f: callable):
 
 @Pipe
 def reduce(lst: list, f: callable, init=None):
-    if not init:
+    if init is None:
         init, *lst = lst
 
     return functools.reduce(f, lst, init)
@@ -111,7 +111,7 @@ def omit(dct: dict, names: list) -> dict:
 def find(lst: list, f: callable):
     v = next(iter(lst), None)
 
-    if not v:
+    if v is None:
         return None
 
     if f(v):
